@@ -1,7 +1,7 @@
-apiVersion: apps/v1
+apiVersion: app/v1
 kind: Deployment
 metadata:
-  name: "{{ .Release.Name }}-deployment"
+  name: {{ .Release.Name }}-deployment
   labels: 
     {{- include "mychart.argocd.labels" . | nindent 4 }}
 spec:
@@ -15,6 +15,7 @@ spec:
         {{- include "mychart.argocd.labels" . | nindent 8 }} 
     spec:
       containers: 
+        name: {{ .Values.image.repository }}-container
         image: {{ .Values.image.repository }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
       restartPolicy: Always
