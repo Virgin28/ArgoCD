@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: drill1-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: drill1/simple-argocd-chart
+    repoURL: 'https://github.com/Virgin28/ArgoCD'
+    targetRevision: main
+    helm:
+      valueFiles: 
+        - $values/drill1/simple-argocd-chart/values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

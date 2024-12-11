@@ -51,6 +51,17 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
+Create ArgoCD-specific labels.
+Usage: {{ include "mychart.argocd.labels" . }}
+*/}}
+{{- define "mychart.argocd.labels" -}}
+app.kubernetes.io/name: {{ .Chart.Name | quote }}
+app.kubernetes.io/instance: {{ .Release.Name | quote }}
+app.kubernetes.io/version: {{ .Chart.Version | quote }}
+{{- end }}
+
+
+{{/*
 Create the name of the service account to use
 */}}
 {{- define "simple-argocd-chart.serviceAccountName" -}}
