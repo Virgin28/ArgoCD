@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-db-deployment
+  labels:
+    {{- include "mychart.argocd.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "mychart.argocd.labels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "mychart.argocd.labels" . | nindent 8 }}
+    spec:
+      containers:
+       - name: mysql-container
+         image: mysql:8.0
+         env:
+         - name: MYSQL_ROOT_PASSWORD
+           value: wordpress
+         - name: MYSQL_DATABASE
+           value: mysql-database
+      restartPolicy: Always   
