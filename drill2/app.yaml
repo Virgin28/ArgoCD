@@ -11,7 +11,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - drill2/parameters-argo-cd/values.yaml
+        - /drill2/parameters-argo-cd/values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: ran  
