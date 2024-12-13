@@ -10,6 +10,15 @@ spec:
     repoURL: 'https://github.com/Virgin28/ArgoCD'
     targetRevision: main
     helm:
+      parameters:
+        - name: wp.replicaCount
+          value: "2"
+        - name: wp.image
+          value: "wordpress"
+        - name: db.nodePort
+          value: "NodePort"
+        - name: db.image
+          value: "mysql:8.0"
       valueFiles:
         - /drill2/parameters-argo-cd/values.yaml
   destination:

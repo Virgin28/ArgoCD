@@ -1,11 +1,13 @@
 wp:
-  image: wordpress
+  image: nginx
   tag: ""
   port: 80
-  replicaCount: 3
+  replicaCount: 8
+  portType: ClusterIP
 
 db:
-  image: mysql
+  image: nginx
   tag: 8.0
   port: 3306
   replicaCount: 1
+  portType: ClusterIP
