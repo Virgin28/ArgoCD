@@ -50,7 +50,6 @@ Usage: {{ include "mychart.argocd.labels" . }}
 app.kubernetes.io/name: {{ .Chart.Name }}-wp
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/version: {{ .Chart.Version }}
-app.kubernetes.io/namespace: "argocd"
 {{- end }}
 
 {{/*
@@ -61,7 +60,6 @@ Usage: {{ include "mychart.argocd.labels" . }}
 app.kubernetes.io/name: {{ .Chart.Name }}-db
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/version: {{ .Chart.Version }}
-app.kubernetes.io/namespace: "argocd"
 {{- end }}
 
 
