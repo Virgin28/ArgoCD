@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: success-rate-check
+spec:
+  metrics:
+    - name: http-success-rate
+      interval: 30s
+      successCondition: result > 95
+      failureLimit: 1
+      provider:
+        web:
+          url: http://{{ include "rollout-practice.fullname" . }}/healthz
+          method: GET
