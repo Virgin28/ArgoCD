@@ -1,30 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Relase.Name }}-wp-deyployment
+  name: "{{ .Release.Name }}-wp-deployment"
   labels:
-    {{- include "mychart.argocd.labels" . | nindent 4 }}
+    {{- include "mychart.argocd.wp.labels" . | nindent 4 }}
 spec:
-  replicas: 3
+  replicas: {{ .Values.wp.replicaCount }}
   selector:
     matchLabels:
-    {{- include "mychart.argocd.labels" . | nindent 6 }}
-      
+      {{- include "mychart.argocd.wp.labels" . | nindent 6 }}
   template:
     metadata:
       labels:
-        {{- include "mychart.argocd.labels" . | nindent 8 }}
+        {{- include "mychart.argocd.wp.labels" . | nindent 8 }}
     spec:
       containers:
-      - name: wp-container
-        image: wordpress
-        env:
-        - name: WORDPRESS_DB_USER
-          value: root
-        - name: WORDPRESS_DB_NAME
-          value: mysql-database
-        - name: WORDPRESS_DB_PASSWORD
-          value: wordpress
-        - name: WORDPRESS_DB_HOST
-          value: mysql-port-service.default.svc.cluster.local # .local.... not necessarry when both pods are under the same namespace 
-      restartPolicy: Always 
+        - name: wp-container
+          image: wordpress
+          env:
+            - name: WORDPRESS_DB_USER
+              value: root
+            - name: WORDPRESS_DB_NAME
+              value: mysql-database
+            - name: WORDPRESS_DB_PASSWORD
+              value: wordpress
+            - name: WORDPRESS_DB_HOST
+              value: mysql-port-service.argocd.svc.cluster.local # .local.... not necessary when both pods are under the same namespace
+      restartPolicy: Always

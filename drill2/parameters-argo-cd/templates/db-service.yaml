@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-port-service
+spec:
+  type: NodePort
+  selector:
+    {{- include "mychart.argocd.db.labels" . | nindent 4 }}
+  ports:
+     - protocol: TCP
+       port: {{ .Values.db.port }}
+       targetPort: {{ .Values.db.port }}

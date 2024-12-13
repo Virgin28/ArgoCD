@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: drill2
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: drill2/parameters-argo-cd
+    repoURL: 'https://github.com/Virgin28/ArgoCD'
+    targetRevision: main
+    helm:
+      valueFiles:
+        - $values/drill2/parameters-argo-cd/values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: argocd  
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

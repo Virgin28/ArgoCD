@@ -43,13 +43,24 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
 
 {{/*
-Create ArgoCD-specific labels.
+Create ArgoCD-specific labels for WP.
 Usage: {{ include "mychart.argocd.labels" . }}
 */}}
-{{- define "mychart.argocd.labels" -}}
-app.kubernetes.io/name: {{ .Chart.Name | quote }}
-app.kubernetes.io/instance: {{ .Release.Name | quote }}
-app.kubernetes.io/version: {{ .Chart.Version | quote }}
+{{- define "mychart.argocd.wp.labels" -}}
+app.kubernetes.io/name: {{ .Chart.Name }}-wp
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/version: {{ .Chart.Version }}
+app.kubernetes.io/namespace: "argocd"
+{{- end }}
+
+{{/*
+Create ArgoCD-specific labels for DB.
+Usage: {{ include "mychart.argocd.labels" . }}
+*/}}
+{{- define "mychart.argocd.db.labels" -}}
+app.kubernetes.io/name: {{ .Chart.Name }}-db
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/version: {{ .Chart.Version }}
 app.kubernetes.io/namespace: "argocd"
 {{- end }}
 
