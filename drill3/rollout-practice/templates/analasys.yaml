@@ -11,5 +11,5 @@ spec:
       failureLimit: 1
       provider:
         web:
-          url: http://{{ include "rollout-practice.fullname" . }}/healthz
+          url: drill3-rollout-practice.ran.svc.cluster.local
           method: GET
