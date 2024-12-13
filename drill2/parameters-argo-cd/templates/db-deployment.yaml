@@ -19,7 +19,13 @@ spec:
           image: mysql:8.0
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: wordpress
+              valueFrom:
+                secretKeyRef:
+                  name: wp-mysql-login-secret
+                  value: MYSQL_ROOT_PASSWORD
             - name: MYSQL_DATABASE
-              value: mysql-database
+              valueFrom:
+                secretKeyRef:
+                  name: wp-mysql-login-secret
+                  value: MYSQL_DATABASE
       restartPolicy: Always

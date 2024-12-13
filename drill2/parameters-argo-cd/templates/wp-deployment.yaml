@@ -19,11 +19,20 @@ spec:
           image: wordpress
           env:
             - name: WORDPRESS_DB_USER
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  name: wp-mysql-login-secret
+                  value: WORDPRESS_DB_USER
             - name: WORDPRESS_DB_NAME
-              value: mysql-database
+              valueFrom:
+                secretKeyRef:
+                  name: wp-mysql-login-secret
+                  value: WORDPRESS_DB_NAME
             - name: WORDPRESS_DB_PASSWORD
-              value: wordpress
+              valueFrom:
+                secretKeyRef:
+                  name: wp-mysql-login-secret
+                  value: WORDPRESS_DB_PASSWORD
             - name: WORDPRESS_DB_HOST
               value: {{ .Release.Name }}-db-service.ran.svc.cluster.local # .local.... not necessary when both pods are under the same namespace
       restartPolicy: Always
