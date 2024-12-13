@@ -15,8 +15,6 @@ spec:
           value: "2"
         - name: wp.image
           value: "wordpress"
-        - name: db.portType
-          value: "NodePort"
         - name: db.image
           value: "mysql:8.0"
       valueFiles:

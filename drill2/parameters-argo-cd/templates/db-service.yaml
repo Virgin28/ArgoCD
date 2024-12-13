@@ -3,11 +3,10 @@ kind: Service
 metadata:
   name: {{ .Release.Name }}-db-service
 spec:
-  type: NodePort
+  CluserIP: {{ .Values.db.ClusterIP }}
   selector:
     {{- include "mychart.argocd.db.labels" . | nindent 4 }}
   ports:
      - protocol: TCP
        port: {{ .Values.db.port }}
        targetPort: {{ .Values.db.port }}
-       nodePort: 30081
