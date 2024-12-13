@@ -11,5 +11,5 @@ spec:
       failureLimit: 1
       provider:
         web:
-          url: drill3-rollout-practice.ran.svc.cluster.local
+          url: http://rollout-practice.drill3.svc.cluster.local/healthz
           method: GET
