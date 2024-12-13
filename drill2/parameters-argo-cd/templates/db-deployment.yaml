@@ -22,10 +22,10 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: wp-mysql-login-secret
-                  value: password
+                  key: password
             - name: MYSQL_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: wp-mysql-login-secret
-                  value: db_name
+                  key: db_name
       restartPolicy: Always

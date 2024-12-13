@@ -8,7 +8,7 @@ spec:
   source:
     path: drill2/parameters-argo-cd
     repoURL: 'https://github.com/Virgin28/ArgoCD'
-    targetRevision: MAIN
+    targetRevision: main
     helm:
       valueFiles:
         - /drill2/parameters-argo-cd/values.yaml
