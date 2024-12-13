@@ -10,4 +10,4 @@ spec:
      - protocol: TCP
        port: {{ .Values.db.port }}
        targetPort: {{ .Values.db.port }}
-       nodePort: 20080
+       nodePort: 30081
