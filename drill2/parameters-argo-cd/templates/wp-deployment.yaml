@@ -25,5 +25,5 @@ spec:
             - name: WORDPRESS_DB_PASSWORD
               value: wordpress
             - name: WORDPRESS_DB_HOST
-              value: {{ .Release.Name }}-db-service.argocd.svc.cluster.local # .local.... not necessary when both pods are under the same namespace
+              value: {{ .Release.Name }}-db-service.ran.svc.cluster.local # .local.... not necessary when both pods are under the same namespace
       restartPolicy: Always

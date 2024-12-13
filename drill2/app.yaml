@@ -14,7 +14,7 @@ spec:
         - drill2/parameters-argo-cd/values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: default  
+    namespace: ran  
   syncPolicy:
     automated:
       prune: true
