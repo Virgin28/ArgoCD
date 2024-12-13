@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AnalysisTemplate
 metadata:
   name: success-rate-check
+  namespace: ran
 spec:
   metrics:
     - name: http-success-rate

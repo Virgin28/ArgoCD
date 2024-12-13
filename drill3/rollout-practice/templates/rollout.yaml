@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: first-rollout
-  namespace: default
+  namespace: ran
 spec:
   replicas: 2
   strategy:
