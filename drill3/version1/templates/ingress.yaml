@@ -2,9 +2,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "rollout-practice.fullname" . }}
+  name: {{ include "version1.fullname" . }}
   labels:
-    {{- include "rollout-practice.labels" . | nindent 4 }}
+    {{- include "version1.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
@@ -35,7 +35,7 @@ spec:
             {{- end }}
             backend:
               service:
-                name: {{ include "rollout-practice.fullname" $ }}
+                name: {{ include "version1.fullname" $ }}
                 port:
                   number: {{ $.Values.service.port }}
           {{- end }}
