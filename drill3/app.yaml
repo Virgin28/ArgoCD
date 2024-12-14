@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    path: drill3/version2
+    path: drill3/version1
     repoURL: 'https://github.com/Virgin28/ArgoCD'
     targetRevision: main
     helm:
