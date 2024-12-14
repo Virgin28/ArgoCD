@@ -9,6 +9,7 @@ spec:
       interval: 30s
       count: 3
       successCondition: result > 95
+      failureCondition: result < 95
       failureLimit: 1
       provider:
         web:
