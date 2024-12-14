@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: first-rollout
+  name: second-rollout
   namespace: {{ .Release.Namespace }}
 spec:
-  replicas: 4
+  replicas: 2
   strategy:
     canary:
       steps:
@@ -28,7 +28,7 @@ spec:
         {{- include "version1.labels" . | nindent 8 }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}-updated
+        - name: {{ .Chart.Name }}-updated-again
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           ports:
             - containerPort: 80
