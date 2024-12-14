@@ -4,7 +4,7 @@ metadata:
   name: first-rollout
   namespace: ran
 spec:
-  replicas: 2
+  replicas: 3
   strategy:
     canary:
       steps:
@@ -21,14 +21,14 @@ spec:
         - setWeight: 100 # Shift all traffic to Green
   selector:
     matchLabels:
-      {{- include "rollout-practice.labels" . | nindent 6 }}
+      app: nginx
   template:
     metadata:
       labels:
-        {{- include "rollout-practice.labels" . | nindent 8 }}
+        app: nginx
     spec:
       containers:
-        - name: {{ .Release.Name }}-container
-          image: {{ .Values.image.repository }}
+        - name: nginx2-container
+          image: nginx
           ports:
-            - containerPort: {{ .Values.service.port }}
+            - containerPort: 80
