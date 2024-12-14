@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: second-rollout
+  name: first-rollout
   namespace: {{ .Release.Namespace }}
 spec:
   replicas: 2
