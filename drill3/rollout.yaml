@@ -4,7 +4,7 @@ metadata:
   name: first-rollout
   namespace: ran
 spec:
-  replicas: 3
+  replicas: 6
   strategy:
     canary:
       steps:
@@ -21,11 +21,13 @@ spec:
         - setWeight: 100 # Shift all traffic to Green
   selector:
     matchLabels:
-      app: nginx
+      app.kubernetes.io/name: rollout-practice
+      app.kubernetes.io/instance: drill3
   template:
     metadata:
       labels:
-        app: nginx
+        app.kubernetes.io/name: rollout-practice
+        app.kubernetes.io/instance: drill3
     spec:
       containers:
         - name: nginx2-container
