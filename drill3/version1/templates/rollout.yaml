@@ -4,7 +4,7 @@ metadata:
   name: first-rollout
   namespace: {{ .Release.Namespace }}
 spec:
-  replicas: 2
+  replicas: 4
   strategy:
     canary:
       steps:
