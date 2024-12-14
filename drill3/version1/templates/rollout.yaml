@@ -4,17 +4,17 @@ metadata:
   name: first-rollout
   namespace: {{ .Release.Namespace }}
 spec:
-  replicas: 6
+  replicas: 3
   strategy:
     canary:
       steps:
         - setWeight: 20
-        - pause: { duration: 5m }
+        - pause: { duration: 30s }
         - analysis:
             templates:
               - templateName: success-rate-check
         - setWeight: 50
-        - pause: { duration: 5m }
+        - pause: { duration: 30s }
         - analysis:
             templates:
               - templateName: success-rate-check
@@ -28,7 +28,7 @@ spec:
         {{- include "version1.labels" . | nindent 8 }}
     spec:
       containers:
-        - name: {{ .Chart.Name }}-updated-again2
+        - name: {{ .Chart.Name }}-updated-again3
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           ports:
             - containerPort: 80
